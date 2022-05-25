@@ -19,6 +19,12 @@ export default function Cart() {
             </div>
           )}
       </section>
+      <div>
+        <h2>Valor Total:</h2>
+        {cartProducts === null ? <h1>carregando...</h1> :
+          cartProducts.reduce((prev, curr) => prev + Number(curr.price), 0)
+        }
+      </div>
     </section>
   )
 }
