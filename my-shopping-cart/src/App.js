@@ -1,12 +1,12 @@
-import api from './services/api';
+import useApi from './services/api';
 
 function App() {
-  const products = api();
-  console.log(products);
+  const products = useApi();
   return (
     <section>
-      {products.map(({ image, title, price }) =>
-        <div>
+      { products === null ? <h1>carregando...</h1> :
+      products.map(({ image, title, price }) =>
+        <div key={title}>
           <h1>{title}</h1>
           <img src={image} alt={title} />
           <h2>{price}</h2>

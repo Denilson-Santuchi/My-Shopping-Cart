@@ -3,7 +3,7 @@ import axios from "axios";
 
 const baseURL = 'https://fakestoreapi.com/products';
 
-export default function Api() {
+export default function useApi() {
   const [products, setProducts] = React.useState(null);
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
