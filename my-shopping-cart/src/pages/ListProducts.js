@@ -1,8 +1,10 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 import useApi from '../services/api';
 
 export default function ListProducts() {
   const products = useApi();
+  const navigate = useNavigate();
   const [cartProducts, setCartProducts] = React.useState([]);
   return (
     <section>
@@ -23,6 +25,9 @@ export default function ListProducts() {
                 }])
               }}
             >add to cart</button>
+            <button
+              onClick={() => navigate('/cart')}
+            >go to cart</button>
           </div>
         )}
     </section>
