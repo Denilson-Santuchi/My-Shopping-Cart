@@ -6,8 +6,8 @@ export default function ListProducts() {
   return (
     <section>
       {products === null ? <h1>carregando...</h1> :
-        products.map(({ image, title, price }) =>
-          <div key={title}>
+        products.map(({ image, title, price, id }) =>
+          <div key={id}>
             <h1>{title}</h1>
             <img src={image} alt={title} />
             <h2>{price}</h2>
