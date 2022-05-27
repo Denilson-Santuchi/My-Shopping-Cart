@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 export default function Cart() {
   const { cartProducts } = React.useContext(MyContext);
   const navigate = useNavigate();
+  const sumProducts = cartProducts.reduce((prev, curr) => prev + Number(curr.price), 0);
   return (
-    <section>
+    <main>
       <h1>Bem vindo ao carrinho de compras</h1>
       <button onClick={() => navigate("/")}>voltar as compras!</button>
       <section>
@@ -19,12 +20,15 @@ export default function Cart() {
             </div>
           )}
       </section>
-      <div>
-        <h2>Valor Total:</h2>
-        {cartProducts === null ? <h1>carregando...</h1> :
-          cartProducts.reduce((prev, curr) => prev + Number(curr.price), 0)
-        }
-      </div>
-    </section>
+      <section>
+        <div>
+          <h2>Valor Total:</h2>
+          {cartProducts === null ? <h1>carregando...</h1> : sumProducts}
+        </div>
+        <div>
+          {sumProducts >= 100 && <h1>Frete grátis liberado!</h1>}
+        </div>
+      </section>
+    </main>
   )
 }
