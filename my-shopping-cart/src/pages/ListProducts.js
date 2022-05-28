@@ -11,7 +11,7 @@ export default function ListProducts() {
   return (
     <main>
       <header className="container-flex">
-        <h1 className="title">Meu carrinho</h1>
+        <h1 className="title">My cart store</h1>
       </header>
       {products === null ? <h1>carregando...</h1> :
         products.map(({ image, title, price, id }) =>
@@ -19,7 +19,7 @@ export default function ListProducts() {
             <h1 className="name">{title}</h1>
             <img src={image} alt={title} className="products" />
             <div className="infos">
-              <h2 className="price">Valor R${price}</h2>
+              <h2 className="price">Price R${price}</h2>
               <button
                 className="button"
                 onClick={() => {

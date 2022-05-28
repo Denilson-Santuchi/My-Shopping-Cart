@@ -8,28 +8,33 @@ export default function Cart() {
   const navigate = useNavigate();
   const sumProducts = cartProducts.reduce((prev, curr) => prev + Number(curr.price), 0);
   return (
-    <main>
-      <h1>Bem vindo ao carrinho de compras</h1>
-      <button onClick={() => navigate("/")}>voltar as compras!</button>
+    <main className="container-flex">
+      <h1 className="title">My shopping cart</h1>
       <section className="container-flex">
-        {cartProducts === null ? <h1>carregando...</h1> :
+        {cartProducts === null ? <h1>loading...</h1> :
           cartProducts.map(({ image, title, price, id }) =>
             <div key={id} className="item">
-              <h1>{title}</h1>
-              <img src={image} alt={title} />
-              <h2>{price}</h2>
+              <h1 className="name">{title}</h1>
+              <img src={image} alt={title} className="products" />
+              <div className="infos">
+                <h2 className="price">Price R${price}</h2>
+                <button
+                  className="button"
+                  onClick={() => navigate("/")}>back to shopping</button>
+              </div>
             </div>
           )}
       </section>
-      <section>
-        <div>
-          <h2>Valor Total:</h2>
-          {cartProducts === null ? <h1>carregando...</h1> : sumProducts}
-        </div>
-        <div>
-          {sumProducts >= 100 && <h1>Frete grátis liberado!</h1>}
-        </div>
-      </section>
+      <div>
+        <section className="container-flex">
+          {cartProducts === null ? <h1>loading...</h1> : <h2 className="infos">Total price: {sumProducts}</h2>}
+          {sumProducts >= 100 && <h1 className="infos">free shipping released!</h1>}
+        </section>
+        <button
+          className="infos"
+          onClick={() => navigate('/cart')}
+        >finalize purchase</button>
+      </div>
     </main>
   )
 }
