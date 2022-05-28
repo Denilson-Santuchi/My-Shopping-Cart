@@ -1,6 +1,7 @@
 import React from 'react'
 import MyContext from '../context/Context';
 import { useNavigate } from "react-router-dom";
+import '../style/listProducts.css';
 
 export default function Cart() {
   const { cartProducts } = React.useContext(MyContext);
@@ -10,10 +11,10 @@ export default function Cart() {
     <main>
       <h1>Bem vindo ao carrinho de compras</h1>
       <button onClick={() => navigate("/")}>voltar as compras!</button>
-      <section>
+      <section className="container-flex">
         {cartProducts === null ? <h1>carregando...</h1> :
           cartProducts.map(({ image, title, price, id }) =>
-            <div key={id}>
+            <div key={id} className="item">
               <h1>{title}</h1>
               <img src={image} alt={title} />
               <h2>{price}</h2>
