@@ -1,19 +1,20 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import MyContext from '../context/Context';
+import LoadingSpinner from '../components/LoadingSpinner';
 import useApi from '../services/api';
 import '../style/listProducts.css';
 
 export default function ListProducts() {
   const products = useApi();
   const navigate = useNavigate();
-  const { cartProducts, setCartProducts } = React.useContext(MyContext);
+  const { cartProducts, setCartProducts} = React.useContext(MyContext);
   return (
     <main>
       <header className="container-flex">
         <h1 className="title">My cart store</h1>
       </header>
-      {products === null ? <h1>carregando...</h1> :
+      {products === null ? <LoadingSpinner /> :
         products.map(({ image, title, price, id }) =>
           <div key={id}>
             <h1 className="name">{title}</h1>
